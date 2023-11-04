@@ -1,0 +1,29 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "": {
+            "scaleInDock": 1
+        },
+        "#water": {
+            "dynamicWrapping": false
+        }
+    },
+    "last.exportedFilePath": "/home/erick/Projetos/games/game-phaser-shot-d2/map",
+    "last.imagePath": "/home/erick/Projetos/games/game-phaser-shot-d2/Tiled",
+    "map.lastUsedExportFilter": "Ficheiros de mapa JSON (*.tmj *.json)",
+    "map.lastUsedFormat": "tmx",
+    "map.width": 25,
+    "openFiles": [
+    ],
+    "project": "newmap.tiled-project",
+    "property.type": "bool",
+    "recentFiles": [
+    ],
+    "tileset.embedInMap": true
+}
