@@ -6,6 +6,7 @@ export default class Demo extends Phaser.Scene
 {
     player;
     controls;
+    water;
     constructor ()
     {
         super('demo');
@@ -25,9 +26,12 @@ export default class Demo extends Phaser.Scene
         const tileSetGrass = map.addTilesetImage('grass', 'tiles');
         const tileSetWater = map.addTilesetImage('water', 'border');
         const ground = map.createLayer('glass', tileSetGrass, 0,0);
-        const water = map.createLayer('water', tileSetWater, 0,0);
+        this.water = map.createLayer('water', tileSetWater, 0,0);
+
+        this.water.setCollisionByProperty({collider:true})
         
         this.player = createPlayer(this);
+        this.physics.add.collider(this.player, this.water)
         this.player.anims.play('player_idle', true)
 
         this.controls = createControls(this);

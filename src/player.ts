@@ -1,9 +1,13 @@
-export const createPlayer= (scene:  Phaser.Scene) => {
-  const player = scene.physics.add.sprite(200,200, 'player_idle')
-  createAnimations(scene);
-  return player
+export interface Player extends Phaser.Physics.Arcade.Sprite {
+  isAttacking?: boolean;
+
 }
 
+export const createPlayer= (scene:  Phaser.Scene) => {
+  const player = scene.physics.add.sprite(200,200, 'player_idle')
+  createAnimations(scene, player);
+  return player
+}
 
 export const loadSprites = (scene: Phaser.Scene): void => {
  scene.load.spritesheet('player_idle', './assets/char/idle.png', {
@@ -25,9 +29,8 @@ export const loadSprites = (scene: Phaser.Scene): void => {
  })
 }
 
-
-export const createAnimations = (scene: Phaser.Scene) :void => {
- scene.anims.create({
+export const createAnimations = (scene: Phaser.Scene, player: Player) :void => {
+  scene.anims.create({
   key: 'player_idle',
   frames: scene.anims.generateFrameNames('player_idle', {
     start:0,
@@ -36,26 +39,35 @@ export const createAnimations = (scene: Phaser.Scene) :void => {
   frameRate: 8, //toda é execução é feita em 8 frames
   repeat: -1, // repete infinitamente
   yoyo: true ,// faz ele ir e voltar
- })
+  })
 
- scene.anims.create({
-  key: 'player_walk',
-  frames: scene.anims.generateFrameNames('player_walk', {
-    start:0,
-    end: 6,
-  }),
-  frameRate: 8,
-  repeat: -1,
- })
+  scene.anims.create({
+    key: 'player_walk',
+    frames: scene.anims.generateFrameNames('player_walk', {
+      start:0,
+      end: 6,
+    }),
+    frameRate: 8,
+    repeat: -1,
+  })
 
+  scene.anims.create({
+    key: 'player_attack',
+    frames: scene.anims.generateFrameNames('player_attack', {
+      start:0,
+      end: 3,
+    }),
+    frameRate: 12, 
+    repeat: 0, 
+  })
 
- scene.anims.create({
-  key: 'player_attack',
-  frames: scene.anims.generateFrameNames('player_attack', {
-    start:0,
-    end: 3,
-  }),
-  frameRate: 12, 
-  repeat: 0, 
- })
+  player.on(
+    'animationcomplete',
+    function(animation){
+      if (animation.key === 'player_attack') {
+        player.isAttacking =  false;
+      }
+    },
+    scene
+  )
 }

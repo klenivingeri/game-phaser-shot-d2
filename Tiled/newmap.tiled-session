@@ -1,0 +1,32 @@
+{
+    "activeFile": "/home/erick/Projetos/games/game-phaser-shot-d2/map/map.tmx",
+    "fileStates": {
+        "": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "#water": {
+            "dynamicWrapping": false
+        },
+        "/home/erick/Projetos/games/game-phaser-shot-d2/map/map.tmx": {
+            "scale": 1,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": -142,
+                "y": 138.5
+            }
+        },
+        "/home/erick/Projetos/games/game-phaser-shot-d2/map/map.tmx#grass": {
+            "scaleInDock": 1
+        },
+        "/home/erick/Projetos/games/game-phaser-shot-d2/map/map.tmx#water": {
+            "scaleInDock": 1
+        }
+    },
+    "openFiles": [
+        "/home/erick/Projetos/games/game-phaser-shot-d2/map/map.tmx"
+    ],
+    "recentFiles": [
+        "/home/erick/Projetos/games/game-phaser-shot-d2/map/map.tmx"
+    ]
+}
