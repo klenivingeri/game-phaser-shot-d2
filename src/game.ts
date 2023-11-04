@@ -1,9 +1,11 @@
 import * as Phaser from 'phaser';
 import { createPlayer, loadSprites } from './player'
+import { configControls, createControls } from './controls'
 
 export default class Demo extends Phaser.Scene
 {
     player;
+    controls;
     constructor ()
     {
         super('demo');
@@ -26,9 +28,13 @@ export default class Demo extends Phaser.Scene
         const water = map.createLayer('water', tileSetWater, 0,0);
         
         this.player = createPlayer(this);
-
         this.player.anims.play('player_idle', true)
 
+        this.controls = createControls(this);
+    }
+
+    update() { 
+        configControls(this.player, this.controls, this);
     }
 }
 
