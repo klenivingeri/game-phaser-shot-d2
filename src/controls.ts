@@ -1,4 +1,6 @@
 import { Player } from './player'
+import { createBullet } from './bullet'
+
 
 export const createControls = (scene: Phaser.Scene): Phaser.Types.Input.Keyboard.CursorKeys => {
   return scene.input.keyboard.createCursorKeys()
@@ -11,6 +13,10 @@ export const configControls = (
 ): void => {
   player.setVelocityX(0)
   player.setVelocityY(0)
+
+  if(player.isAttacking){
+    return;
+  }
 
   if (controls.right.isDown) {
     moveRight(player);
@@ -31,16 +37,13 @@ export const configControls = (
 
   if (controls.space.isDown) {
     if(!player.isAttacking){
-      attack(player);
+      attack(player, scene);
     }
-    
     return;
   }
-  
-  if(!player.isAttacking){
-    player.anims.play('player_idle', true)
-  }
-  
+
+  player.anims.play('player_idle', true)
+
 };
 
 const defaultVelocity = 200; //velocidade personagem
@@ -66,7 +69,11 @@ const moveDown = (player): void => {
   player.setVelocityY(defaultVelocity)
 }
 
-const attack = (player: Player): void => {
+const attack = (player: Player, scene: Phaser.Scene): void => {
   player.isAttacking = true;
   player.anims.play('player_attack', true)
+  createBullet(player, scene)
+  setTimeout(()=>{
+    createBullet(player, scene)
+  },100)
 }

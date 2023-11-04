@@ -1,12 +1,16 @@
 import * as Phaser from 'phaser';
-import { createPlayer, loadSprites } from './player'
+import { createPlayer, loadPlayerSprites } from './player'
 import { configControls, createControls } from './controls'
+import { loadBulletSprites } from './bullet'
+import { createEnemyAnimations, loadEnemySprites, createEnemy } from './enemy'
 
 export default class Demo extends Phaser.Scene
 {
     player;
     controls;
     water;
+    bullet;
+    enemy;
     constructor ()
     {
         super('demo');
@@ -17,7 +21,9 @@ export default class Demo extends Phaser.Scene
         this.load.image('tiles', './assets/map/grass.png');
         this.load.image('border', './assets/map/water.png');
         this.load.tilemapTiledJSON('map','./assets/map/map.json')
-        loadSprites(this);
+        loadPlayerSprites(this);
+        loadBulletSprites(this);
+        loadEnemySprites(this);
     }
 
     create ()
@@ -31,10 +37,12 @@ export default class Demo extends Phaser.Scene
         this.water.setCollisionByProperty({collider:true})
         
         this.player = createPlayer(this);
-        this.physics.add.collider(this.player, this.water)
         this.player.anims.play('player_idle', true)
+        this.physics.add.collider(this.player, this.water)
 
         this.controls = createControls(this);
+        createEnemyAnimations(this);
+        createEnemy(this);
     }
 
     update() { 
@@ -43,6 +51,7 @@ export default class Demo extends Phaser.Scene
 }
 
 const config = {
+    pixelArt: true,
     type: Phaser.AUTO,
     backgroundColor: '#125555',
     width: 800,
