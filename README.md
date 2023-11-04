@@ -1,12 +1,4 @@
-# Phaser 3 TypeScript Project Template
-
-This quick-start project template combines Phaser 3.60 with [TypeScript 5](https://www.typescriptlang.org/) and uses [Rollup](https://rollupjs.org) for bundling.
-
-## Requirements
-
-[Node.js](https://nodejs.org) is required to install dependencies and run scripts via `npm`.
-
-## Available Commands
+# Criando mini game com Template TypeScript do Phaser 3
 
 | Command | Description |
 |---------|-------------|
@@ -15,25 +7,25 @@ This quick-start project template combines Phaser 3.60 with [TypeScript 5](https
 | `npm run dev` | Builds project and open web server, but do not watch for changes |
 | `npm run build` | Builds code bundle with production settings (minification, no source maps, etc..) |
 
-## Writing Code
+## Tutorial
+ Criei esse projeto para aprender a usar Phaser 3 na criação de jogos.
 
-After cloning the repo, run `npm install` from your project directory. Then, you can start the local development
-server by running `npm run watch`. The first time you run this you should see the following demo run:
+ Canal do Youtube: [Programando Juntos](https://www.youtube.com/watch?v=xmVvY3S5bC4&list=PLA_KBeWRlh0RJOs8DMtg8bKA_Pw_nk-MF&ab_channel=ProgramandoJuntos)
 
-![Screenshot](screenshot.png "Phaser 3 Example")
+ [Repositorio do projeto](https://github.com/LeandroVCastro/rpg-phaser)
 
-After starting the development server with `npm run watch`, you can edit any files in the `src` folder
-and Rollup will automatically recompile and reload your server (available at `http://localhost:10001`
-by default).
+  1) Criando mapa RPG com Tiled Editor para Phaser JS
+  2) Criando um RPG do zero
+  3) Criando Personagem
+  4) Movimentação do personagem e ataque 
+  5) Colisão e limitando ataques
+  6) Atirando e Criando inimigo 
+  7) Continua ...
 
-## Configuring Rollup
 
-* Edit the file `rollup.config.dev.js` to edit the development build.
-* Edit the file `rollup.config.dist.js` to edit the distribution build.
 
-You will find lots of comments inside the rollup config files to help you do this.
-
-Note that due to the build process involved, it can take around 20 seconds to build the initial bundle. Times will vary based on CPU and local drive speeds. The development config does not minify the code in order to save build time, but it does generate source maps. If you do not require these, disable them in the config to speed it up further.
+### Game
+![alt text](screenshot.gif)
 
 ## Versions Used
 
